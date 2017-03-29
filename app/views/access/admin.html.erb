@@ -1,0 +1,77 @@
+<% @page_title = "Admin Menu" %>
+
+<div class="container">
+  <div class="row">
+     <div align="right">Logged in as: <%= session[:username] %>  <span class="logout"><%=link_to("Logout", :action => 'logout') %></span>
+      </div>
+
+    <h1>Admin Menu</h1><hr>
+  </div>
+  
+  <div class="row">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Administrative</div>
+      <table class="table">
+        <tr>
+            <th><%= link_to("Manage Users", :controller => 'access', :action => 'index') %></th>
+        </tr>
+        <tr>
+          <th><%= link_to("Manage Services", :controller => 'services') %></th>
+        </tr>
+        <tr>
+          <th><%= link_to("Manage Service Requests", :controller => 'service_requests') %></th>
+        </tr>
+        <tr>
+          <th><%= link_to("Manage Categories", :controller => 'categories') %></th>
+        </tr>
+        <tr>
+          <th><%= link_to("Manage Tools", :controller => 'tools') %></th>
+        </tr>
+        <tr>
+          <th><%= link_to("Manage Lists", :controller => 'task_spec_cats', :action => 'index') %></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+   <div class="panel panel-primary">
+      <div class="panel-heading">Customer</div>
+      <table class="table">
+        <tr>
+            <th><%= link_to("View Profile", :controller => 'customers', :action => 'index') %></th>
+        </tr>
+        <tr>
+          <th><%= link_to("Post New Service Request", :controller => 'cust_services') %></th>
+        </tr>
+        <tr>
+          <th><%= link_to("Manage Services Requests", :controller => 'cust_services', :action => 'show') %></th>
+        </tr>
+        <tr>
+          <th><%= link_to("Manage Current Jobs", :controller => 'jobs', :action => 'index') %></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+   <div class="panel panel-primary">
+      <div class="panel-heading">Assistant</div>
+      <table class="table">
+        <tr>
+            <th><%= link_to("View Profile", :controller => 'assistants', :action => 'index') %></th>
+        </tr>
+        <tr>
+          <th><%= link_to("Apply for Open Service Request", :controller => 'assist_services') %></th>
+        </tr>
+        <tr>
+          <th><%= link_to("Manage Open Requests", :controller => 'assist_services') %></th>
+        </tr>
+        <tr>
+          <th><%= link_to("Manage Current Jobs", :controller => 'jobs', :action => 'index') %></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>

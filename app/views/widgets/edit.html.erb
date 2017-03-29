@@ -1,0 +1,80 @@
+<% @page_title = "Widget Edit Page" %>
+
+<br>
+<br>
+
+<h2>My Order</h2>
+
+<div class="content">
+
+  <br>
+  <h4>Add Items</h2>
+  <hr>
+
+  <%= form_for(:widget, :url => {:controller => 'widgets', :action => 'update', :order_id => @order.id}) do |f| %>
+
+  	<table class="table table-bordered table-striped">
+      <tr>
+          <th><%= f.label("Type") %></th>
+          <td><%= f.select(:wigtype, ["", "Widget", "Widget Pro", "Widget Xtreme"]) %></td>
+     </tr>
+  		<tr>
+    		<th><%= f.label(:color) %></th>
+    		<td><%= f.select(:color, ["", "red", "blue", "yellow"]) %></td>
+  		</tr>
+      <tr>
+        <th><%= f.label(:quantity) %></th>
+        <td><%= f.text_field(:quantity) %> 
+          <% if !@widget.blank? then %>
+            <% if @widget.errors[:quantity] then %>
+             <% @widget.errors.full_messages_for(:quantity).each do |msg| %>
+                <div class="alert-danger"><%= msg %></div>
+             <% end %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+	</table>
+
+	 <div class="actions">
+	    <%= submit_tag( "Add To Cart (+)", class: 'btn btn-primary' ) %> 
+	  </div>
+
+ <% end %>
+
+ <br>
+ <br>
+
+<% if !@widgets.blank? then %>
+
+  <div>
+    <h4>Ordered Items</h2>
+     <hr>
+
+      <table table class="table table-bordered table-striped">   
+        <th>#</th>
+        <th>ID</th>
+        <th>Item</th>
+        <th>Remove</th>
+        <% @widgets.each_with_index do |w, index| %> 
+        <tr>
+            <th><%= "Item " + (index + 1).to_s %></th>
+            <td>W100<%= w.id.to_s %></td>
+            <td><%= w.wigtype %> (<%= w.color %>)</td>
+            <td><%= link_to "[X]", {:controller => 'widgets', :action => 'destroy', :order_id => @order.id, :widget_id => w.id, :method => 'patch'} %></td>
+        </tr>
+
+        <% end %>
+      </table>
+
+      <div class="row">
+          <div class="col-sm-5 col-md-6"><span><%= link_to "Proceed to Checkout", {:controller => 'orders', :action => 'edit', order_id: @order.id }, class: 'btn btn-primary btn-block' %></span></div>
+          <div class="col-sm-5 col-md-6"><span>
+            <%= link_to "Cancel Order", {:controller => 'orders', :action => 'destroy', order_id: @order.id}, class: 'btn btn-danger btn-block' %></span></div>
+      </div>
+  </div>
+  
+<% end %>
+
+</div> 
+<br>

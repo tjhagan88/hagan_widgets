@@ -1,0 +1,23 @@
+
+
+<br>
+<br>
+
+<table table class="table table-bordered table-striped">   
+    <th>Order ID</th>
+    <th>User</th>
+    <th>Delivery Dt</th>
+    <th>Status</th>
+    <th>Admin Actions</th>
+
+    <% @orders.each_with_index do |w, index| %> 
+	    <tr>
+	        <th>SH100<%= w.id %></th>
+	        <td><%= w.user.email %></td>
+	        <td><%= w.arrivalDt %></td>
+	        <td><%= w.status %></td>
+	        <td><%= link_to "Update Status", :controller => "orders", :action => "ed_stat", :order_id => w.id %></td>
+	    </tr>
+    <% end %>
+
+  </table>

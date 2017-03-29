@@ -1,0 +1,62 @@
+<% @page_title = "Orders Page" %>
+<br>
+<br>
+<div class="content">
+  <h2>Confirm Order</h2>
+  <br>
+  <h4>Order Details</h2>
+  <hr>
+
+  <%= form_for(:order, :url => {:controller => 'orders', :action => 'update', :order_id => @order.id}) do |f| %>
+
+  <table class="table table-bordered table-striped">
+      <tr>
+        <th><%= f.label('Email') %></th>
+        <td><%= @order.user.email %> 
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label("Delivery Date") %></th>
+        <td><%= f.date_select(:arrivalDt, order: [:month, :day, :year], default: 7.days.from_now) %>
+         <i> * Needs to be at least 7 days from today's date</i>
+           <% if !@order.blank? then %>
+            <% if @order.errors[:arrivalDt] then %>
+             <% @order.errors.full_messages_for(:arrivalDt).each do |msg| %>
+                <div class="alert-danger"><%= msg %></div>
+             <% end %>
+            <% end %>
+          <% end %>
+       </td>
+      </tr>
+      <tr>
+       <th><%= f.label("Status") %></th>
+       <td><i><%= @order.status %></i></td>
+      </tr>
+  </table>
+
+ <br>
+ <h4>Shopping Cart | <%= link_to "Edit", :controller => 'widgets', :action => 'edit', :order_id => @order.id %></h2> 
+ <hr>
+
+  <table table class="table table-bordered table-striped">   
+    <th>#</th>
+    <th>ID</th>
+    <th>Item</th>
+    <% @widgets.each_with_index do |w, index| %> 
+    <tr>
+        <th><%= "Item " + (index + 1).to_s %></th>
+        <td>W100<%= w.id %></td>
+        <td><%= w.wigtype %> (<%= w.color %>)</td>
+    </tr>
+
+    <% end %>
+  </table>
+
+
+  <div class="actions">
+      <%= submit_tag( "Submit Order", class: 'btn btn-primary btn-block' ) %> 
+    </div>
+
+    <% end %>
+</div> 
+<br>

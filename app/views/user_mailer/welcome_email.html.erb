@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello <%= @user.first_name %>!</h1>
+    <p>
+      Your order has successfully been placed (#SH100<%= @order.id %>)<br>
+    </p>
+    <p>
+      To check the status of your order, just follow this link: <a href=<%= @url %>>Order Status</a>.
+    </p>
+    <p>Thanks for shopping with us and have a great day!</p>
+  </body>
+</html>

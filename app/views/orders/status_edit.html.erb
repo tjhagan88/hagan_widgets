@@ -1,0 +1,43 @@
+<% @page_title = "Orders Page" %>
+<br>
+<br>
+<div class="content">
+  <h2>Confirm Order</h2>
+  <br>
+  <h4>Order Details</h2>
+  <hr>
+
+   <%= form_for(@order, :url => {:controller => 'orders', :action => 'status_update', :order_id => @order.id}) do |f| %>
+
+  <table class="table table-bordered table-striped">
+      <tr>
+        <th><%= f.label("Email") %></th>
+        <td><%= if !@order.user.blank? then f.label(@order.user.email) end %> 
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label("Delivery Date") %></th>
+        <td><%= f.date_select(:arrivalDt, order: [:month, :day, :year], default: 7.days.from_now) %>
+         <i> * Needs to be at least 7 days from today's date</i>
+           <% if !@order.blank? then %>
+            <% if @order.errors[:arrivalDt] then %>
+             <% @order.errors.full_messages_for(:arrivalDt).each do |msg| %>
+                <div class="alert-danger"><%= msg %></div>
+             <% end %>
+            <% end %>
+          <% end %>
+       </td>
+      </tr>
+      <tr>
+       <th><%= f.label(:status) %></th>
+       <td><%= f.text_field(:status) %></td>
+      </tr>
+  </table>
+
+    <div class="actions">
+      <%= submit_tag( "Update Order", class: 'btn btn-primary btn-block' ) %> 
+    </div>
+
+  <% end %>
+</div> 
+<br>

@@ -1,0 +1,20 @@
+<nav class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <ul class="nav navbar-nav navbar-right">
+      <li><% if session[:user_admin] == true then %>
+         <%= link_to("Manage Orders", :controller => 'orders', :action => 'index')  %>
+        <% end %>
+      </li>
+      <li><%= link_to("New Order", :controller => 'widgets', :action => 'new')%>
+      <li><%= link_to("Edit Profile", :controller => 'users', :action => 'edit', :user_id => session[:user_id])%>
+      </li>
+      <li><% if !session[:user_id].blank? then %>
+        <%= link_to("Log Out", :controller => 'access', :action => 'logout')%>
+        <% else %>
+        <%= link_to("Log In", :controller => 'access', :action => 'login')%>
+        <% end %>
+      </li>
+ 
+    </ul>
+  </div>
+</nav>

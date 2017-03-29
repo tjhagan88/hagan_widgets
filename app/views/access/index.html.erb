@@ -1,0 +1,34 @@
+<% @page_title = "Users List" %>
+
+<%= link_to("<< Back to Menu", {:controller => 'access', :action => 'admin'}, :class => 'back-link') %>
+
+<div class="user index">
+  <h2>Users</h2>
+
+  <%= link_to('Add New User', {:action => 'new'}, :class => 'action new') %>
+
+  <div><%= pluralize(@users.size, 'user') %> found</div>
+
+  <table class="table table-bordered table-striped">
+
+    <tr>
+      <th>Username</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+
+    <% @users.each do |u| %>
+    <tr>
+      <td><%= u.username %></td>
+      <td><%= u.name %></td>
+      <td><%= mail_to(u.email) %></td>
+      <td class="actions">
+        <%= link_to('Edit', {:action => 'edit', :user_id => u.id}, :class => 'action edit') %>
+        <%= link_to('Delete', {:action => 'delete', :user_id => u.id}, :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
+</div>

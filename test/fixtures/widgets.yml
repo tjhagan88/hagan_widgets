@@ -1,0 +1,54 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+
+
+widget_1_1:
+    id: 1
+    color: red
+    wigtype: Widget
+    order_id: 1
+widget_1_2:
+    id: 2
+    color: blue
+    wigtype: Widget
+    order_id: 1
+widget_1_3:
+    id: 3
+    color: yellow
+    wigtype: Widget
+    order_id: 1
+widget_2_1:
+    id: 4
+    color: red
+    wigtype: Widget Pro
+    order_id: 2
+widget_2_2:
+    id: 5
+    color: blue
+    wigtype: Widget Pro
+    order_id: 2
+widget_2_3:
+    id: 6
+    color: yellow
+    wigtype: Widget Xtreme
+    order_id: 2
+widget_3_1:
+    id: 7
+    color: red
+    wigtype: Widget Xtreme
+    order_id: 3
+widget_3_2:
+    id: 8
+    color: blue
+    wigtype: Widget Xtreme
+    order_id: 3
+widget_3_3:
+    id: 9
+    color: yellow
+    wigtype: Widget Xtreme
+    order_id: 2
+

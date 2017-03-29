@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= 'Widgets' %></title>
+    <%= stylesheet_link_tag 'application', media: 'all',
+                                           'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <%= render 'layouts/header' %>
+    <br>
+    <% if !flash[:notice].blank? %>
+        <br><br>
+        <div class="alert alert-success">
+          <strong></strong> <%= flash[:notice] %>
+        </div>
+    <% end %>
+
+    <div class="content" style="padding-left:20px">
+      <%= yield %>
+    </div>
+  
+  </body>
+</html>
+
+
+

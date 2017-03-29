@@ -1,0 +1,33 @@
+<% @page_title = "Orders Page" %>
+
+<br>
+
+<div class="content">
+  <h2>My Order</h2>
+
+  <b>Status:</b> <i><%= @order.status %> </i>
+
+  <%= form_for(:widget, :url => {:controller => 'widgets', :action => 'create'}) do |f| %>
+
+    <table class="table table-bordered table-striped">
+      <tr>
+          <th><%= f.label("Type") %></th>
+          <td><%= f.select(:wigtype, ["Widget", "Widget Pro", "Widget Xtreme"]) %></td>
+     </tr>
+      <tr>
+        <th><%= f.label(:color) %></th>
+        <td><%= f.text_field(:color) %></td>
+      </tr>
+      <tr>
+        <th><%= f.label(:quantity) %></th>
+        <td><%= f.text_field(:quantity) %></td>
+      </tr>
+  </table>
+  
+   <div class="actions">
+        <%= submit_tag( "Add Widgets (+)", class: 'btn btn-primary' ) %> 
+    </div>
+ 
+ <% end %>
+
+</div> 

@@ -1,0 +1,23 @@
+<% @page_title = "Order Review" %>
+
+<br>
+<br>
+<div class="content">
+  <h2>Order Review</h2>
+  <br>
+  <table class="table table-bordered table-striped">
+      <tr>
+        <th><%= "Confirmation Number" %></th>
+        <td>S100<%= @order.id %> 
+      </tr>
+      <tr>
+        <th><%= "Status" %></th>
+        <td><%= @order.status %> 
+      </tr>
+      <tr>
+        <th><%= "Shipping Date" %></th>
+        <td><%= @order.arrivalDt %> 
+      </tr>
+   </table>
+
+</div> 
